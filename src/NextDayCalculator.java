@@ -5,6 +5,17 @@ public class NextDayCalculator {
 
     public static String getNextDay(int dayTest, int monthTest, int yearTest) {
         String result;
+        int lastOfMonth = getLastOfMonth(monthTest);
+        if (dayTest== lastOfMonth){
+            result = FIRSTOFMONTH + CONCATENATION + (++monthTest) + CONCATENATION + yearTest;
+        }
+        else {
+            result = ++dayTest + CONCATENATION + monthTest + CONCATENATION + yearTest;
+        }
+        return result;
+    }
+
+    private static int getLastOfMonth(int monthTest) {
         int lastOfMonth =0;
         switch (monthTest){
             case 1:
@@ -20,12 +31,6 @@ public class NextDayCalculator {
                 lastOfMonth=30;
 
         }
-        if (dayTest== lastOfMonth){
-            result = FIRSTOFMONTH + CONCATENATION + (++monthTest) + CONCATENATION + yearTest;
-        }
-        else {
-            result = ++dayTest + CONCATENATION + monthTest + CONCATENATION + yearTest;
-        }
-        return result;
+        return lastOfMonth;
     }
 }
